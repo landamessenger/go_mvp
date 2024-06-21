@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:go_mvp/go_mvp.dart';
 
+import 'secondary_types.dart';
 import 'presenter/secondary_presenter.dart';
 import 'view/secondary_page_state.dart';
 
-class SecondaryPage extends WidgetInterface<SecondaryPresenter, SecondaryPage> {
+class SecondaryPage extends SecondaryWidget {
   static const String routeName = 'secondary';
   static const String tagStateName = '_SecondaryPageState';
 

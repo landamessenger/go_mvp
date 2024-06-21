@@ -1,5 +1,3 @@
-import 'package:example/data/model/generated/model.g.dart';
-
 import 'base_secondary_presenter.dart';
 
 class SecondaryPresenter extends BaseSecondaryPresenter {

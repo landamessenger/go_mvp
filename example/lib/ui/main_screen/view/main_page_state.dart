@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_mvp/go_mvp.dart';
 
-import '../main_page.dart';
-import '../presenter/main_presenter.dart';
-import 'main_view.dart';
+import '../main_types.dart';
 
-class MainPageState extends Lifecycle<MainPage, MainPageState, MainPresenter>
-    implements MainView {
+class MainPageState extends MainLifecycle {
   @override
   Widget onBuild(BuildContext context) {
     return Scaffold(
@@ -32,10 +28,21 @@ class MainPageState extends Lifecycle<MainPage, MainPageState, MainPresenter>
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: presenter.sampleAction,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          FloatingActionButton(
+            onPressed: presenter.sampleAction,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ),
+          const Padding(padding: EdgeInsets.all(7.5)),
+          FloatingActionButton(
+            onPressed: presenter.goToNextScreen,
+            tooltip: 'Navigate',
+            child: const Icon(Icons.navigate_next),
+          ),
+        ],
       ),
     );
   }

@@ -1,15 +1,16 @@
 import 'dart:io';
 
-import 'utils/print.dart';
-import 'utils/case.dart';
 import 'template/main_screen/domain/main_state.dart';
+import 'template/main_screen/main_page.dart';
+import 'template/main_screen/main_types.dart';
 import 'template/main_screen/model/base_main_view_model.dart';
 import 'template/main_screen/model/main_view_model.dart';
 import 'template/main_screen/presenter/base_main_presenter.dart';
 import 'template/main_screen/presenter/main_presenter.dart';
 import 'template/main_screen/view/main_page_state.dart';
 import 'template/main_screen/view/main_view.dart';
-import 'template/main_screen/main_page.dart';
+import 'utils/case.dart';
+import 'utils/print.dart';
 
 main(List<String> args) async {
   if (args.length != 3) {
@@ -42,9 +43,9 @@ main(List<String> args) async {
   await createBaseViewModelFile(destinationPath, newPathName);
   await createViewModelFile(destinationPath, newPathName);
   await createBasePresenterFile(destinationPath, newPathName);
-  await createPresenterFile(destinationPath, newPathName, generatedModelPath);
+  await createPresenterFile(destinationPath, newPathName);
   await createPageStateFile(destinationPath, newPathName);
   await createViewFile(destinationPath, newPathName);
   await createPageFile(destinationPath, newPathName);
+  await createTypesFile(destinationPath, newPathName);
 }
-

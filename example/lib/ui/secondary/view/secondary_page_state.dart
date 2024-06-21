@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_mvp/go_mvp.dart';
 
-import '../secondary_page.dart';
-import '../presenter/secondary_presenter.dart';
-import 'secondary_view.dart';
+import '../secondary_types.dart';
 
-class SecondaryPageState
-    extends Lifecycle<SecondaryPage, SecondaryPageState, SecondaryPresenter>
-    implements SecondaryView {
+class SecondaryPageState extends SecondaryLifecycle {
   @override
   Widget onBuild(BuildContext context) {
     return Scaffold(

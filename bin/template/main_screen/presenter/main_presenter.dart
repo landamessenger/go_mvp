@@ -2,11 +2,9 @@ import 'dart:io';
 
 import '../../../utils/case.dart';
 
-Future<void> createPresenterFile(String path, String name, String generatedModelPath) async {
+Future<void> createPresenterFile(String path, String name) async {
   final nominal = generateName(name);
   final content = """
-import 'package:$generatedModelPath';
-
 import 'base_${name}_presenter.dart';
 
 class ${nominal}Presenter extends Base${nominal}Presenter {

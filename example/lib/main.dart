@@ -4,6 +4,7 @@ import 'package:go_mvp/go_mvp.dart';
 import 'routes.dart';
 
 void main() {
+  PageManager().router = router;
   runApp(const MyApp());
 }
 

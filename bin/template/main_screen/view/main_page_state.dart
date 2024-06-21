@@ -6,14 +6,10 @@ Future<void> createPageStateFile(String path, String name) async {
   final nominal = generateName(name);
   final content = """
 import 'package:flutter/material.dart';
-import 'package:go_mvp/go_mvp.dart';
 
-import '../${name}_page.dart';
-import '../presenter/${name}_presenter.dart';
-import '${name}_view.dart';
+import '../${name}_types.dart';
 
-class ${nominal}PageState extends Lifecycle<${nominal}Page, ${nominal}PageState, ${nominal}Presenter>
-    implements ${nominal}View {
+class ${nominal}PageState extends ${nominal}Lifecycle {
   @override
   Widget onBuild(BuildContext context) {
     return Scaffold(

@@ -9,7 +9,10 @@ import '../manager/page_manager.dart';
 import 'view.dart';
 import 'view_model.dart';
 
-abstract class Presenter<V extends View, M extends ViewModel<Object>> {
+abstract class Presenter<S extends Object<S>, M extends ViewModel<S>,
+    V extends View> {
+  S get state => model.state;
+
   bool initialized = false;
 
   String key = '';

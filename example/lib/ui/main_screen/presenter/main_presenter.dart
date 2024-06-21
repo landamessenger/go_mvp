@@ -1,14 +1,15 @@
-import 'package:example/ui/main_screen/domain/main_state.dart';
+import 'package:go_mvp/go_mvp.dart';
 
 import 'base_main_presenter.dart';
 
 class MainPresenter extends BaseMainPresenter {
-  MainState get state => model.state;
-
   @override
   void sampleAction() async {
     showTextSnack("Incrementing counter");
     await model.remoteIncrementCounter();
     showTextSnack("Incremented counter");
   }
+
+  @override
+  void goToNextScreen() => ['secondary'].route();
 }

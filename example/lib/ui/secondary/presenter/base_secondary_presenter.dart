@@ -1,13 +1,7 @@
-import 'package:go_mvp/go_mvp.dart';
-
+import '../secondary_types.dart';
 import '../model/secondary_view_model.dart';
-import '../view/secondary_view.dart';
-import '../domain/secondary_state.dart';
 
-abstract class BaseSecondaryPresenter
-    extends Presenter<SecondaryView, SecondaryViewModel> {
-  SecondaryState get state => model.state;
-
+abstract class BaseSecondaryPresenter extends SecondaryPresenterDefinition {
   @override
   SecondaryViewModel model = SecondaryViewModel();
 

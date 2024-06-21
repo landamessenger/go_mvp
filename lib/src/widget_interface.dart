@@ -1,15 +1,22 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart' hide View;
 import 'package:go_router/go_router.dart';
+import 'package:object/object.dart';
 
 import 'manager/page_manager.dart';
 import 'layers/presenter.dart';
+import 'layers/view_model.dart';
+import 'layers/view.dart';
 import 'presenter_handler.dart';
 
-abstract class WidgetInterface<P extends Presenter,
-    V extends WidgetInterface<P, V>> extends StatefulWidget {
+abstract class WidgetInterface<
+    S extends Object<S>,
+    M extends ViewModel<S>,
+    V extends View,
+    P extends Presenter<S, M, V>,
+    W extends WidgetInterface<S, M, V, P, W>> extends StatefulWidget {
   final String route;
   final String tagName;
-  late final PresenterHandler<P> presenterHandler;
+  late final PresenterHandler<S, M, V, P> presenterHandler;
 
   P get presenter => presenterHandler.presenter!;
 
@@ -26,8 +33,8 @@ abstract class WidgetInterface<P extends Presenter,
     GoRouterState state, {
     Map<String, dynamic>? extraData,
   }) =>
-      PageManager().pageFor(
-        page: this,
+      PageManager().pageFor<S, M, V, P, W>(
+        page: this as W,
         state: state,
         extraData: extraData,
       );

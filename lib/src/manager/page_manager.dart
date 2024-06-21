@@ -1,8 +1,11 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide View;
+import 'package:object/object.dart';
 import 'package:go_router/go_router.dart';
 
 import '../layers/presenter.dart';
+import '../layers/view_model.dart';
+import '../layers/view.dart';
 import '../utils/json_ext.dart';
 import '../widget_interface.dart';
 
@@ -40,7 +43,12 @@ class PageManager {
     return _instance!;
   }
 
-  Page<void> pageFor<P extends Presenter, W extends WidgetInterface<P, W>>({
+  Page<void> pageFor<
+      S extends Object<S>,
+      M extends ViewModel<S>,
+      V extends View,
+      P extends Presenter<S, M, V>,
+      W extends WidgetInterface<S, M, V, P, W>>({
     required W page,
     required GoRouterState state,
     Map<String, dynamic>? extraData,

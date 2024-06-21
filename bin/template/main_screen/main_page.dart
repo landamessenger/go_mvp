@@ -6,12 +6,12 @@ Future<void> createPageFile(String path, String name) async {
   final nominal = generateName(name);
   final content = """
 import 'package:flutter/material.dart';
-import 'package:go_mvp/go_mvp.dart';
 
+import '${name}_types.dart';
 import 'presenter/${name}_presenter.dart';
 import 'view/${name}_page_state.dart';
 
-class ${nominal}Page extends WidgetInterface<${nominal}Presenter, ${nominal}Page> {
+class ${nominal}Page extends ${nominal}Widget {
   static const String routeName = '$name';
   static const String tagStateName = '_${nominal}PageState';
 

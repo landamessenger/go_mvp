@@ -5,15 +5,10 @@ import '../../../utils/case.dart';
 Future<void> createBasePresenterFile(String path, String name) async {
   final nominal = generateName(name);
   final content = """
-import 'package:go_mvp/go_mvp.dart';
-
+import '../${name}_types.dart';
 import '../model/${name}_view_model.dart';
-import '../view/${name}_view.dart';
-import '../domain/${name}_state.dart';
 
-abstract class Base${nominal}Presenter extends Presenter<${nominal}View, ${nominal}ViewModel> {
-  ${nominal}State get state => model.state;
-
+abstract class Base${nominal}Presenter extends ${nominal}PresenterDefinition {
   @override
   ${nominal}ViewModel model = ${nominal}ViewModel();
 

@@ -1,3 +1,4 @@
+import 'package:object/object.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide View;
 import 'package:go_mvp/src/manager/page_manager.dart';
@@ -5,6 +6,7 @@ import 'package:visibility_detector/visibility_detector.dart';
 
 import 'layers/presenter.dart';
 import 'layers/view.dart';
+import 'layers/view_model.dart';
 import 'utils/print.dart';
 import 'widget_interface.dart';
 
@@ -13,14 +15,19 @@ final RouteObserver<ModalRoute> routeObserver = RouteObserver<ModalRoute>();
 
 enum Status { initial, created, resumed, paused, destroyed }
 
-abstract class Lifecycle<W extends WidgetInterface<P, W>, S extends View,
-    P extends Presenter> extends State with WidgetsBindingObserver, RouteAware {
+abstract class Lifecycle<
+        S extends Object<S>,
+        M extends ViewModel<S>,
+        V extends View,
+        P extends Presenter<S, M, V>,
+        W extends WidgetInterface<S, M, V, P, W>> extends State
+    with WidgetsBindingObserver, RouteAware {
   String tagInStateWithLifecycle = 'StateWithLifecycle';
 
   @override
   W get widget => super.widget as W;
 
-  S get view => this as S;
+  V get view => this as V;
 
   late P presenter;
 
