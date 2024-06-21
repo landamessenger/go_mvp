@@ -2,9 +2,8 @@ import 'package:object/object.dart';
 
 import '../manager/page_manager.dart';
 
-// <S extends Object<S>>
-abstract class ViewModel {
-  //abstract S state;
+abstract class ViewModel<S extends Object<S>> {
+  abstract S state;
 
   final pageManager = PageManager();
 

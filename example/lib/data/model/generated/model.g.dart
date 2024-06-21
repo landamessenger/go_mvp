@@ -10,6 +10,7 @@ import 'package:object/object.dart';
 export 'package:object/object.dart';
 
 import 'package:example/ui/main_screen/domain/main_state.dart';
+import 'package:example/ui/secondary/domain/secondary_state.dart';
 
 class Model {
   static Model? _instance;
@@ -23,6 +24,7 @@ class Model {
 
   final List<dynamic> _instances = [
     MainState(),
+    SecondaryState(),
   ];
 
   void instancesForLoad({List<dynamic> additional = const []}) {
@@ -52,6 +54,36 @@ abstract class MainStateGen extends Object<MainState> {
 
   @override
   MainState instance() => MainState();
+
+  @override
+  String getId() {
+    return '';
+  }
+
+  void onLoad() {
+    // nothing to do here
+  }
+}
+
+abstract class SecondaryStateGen extends Object<SecondaryState> {
+  abstract int counter;
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'counter': counter,
+      };
+
+  @override
+  SecondaryState fromJson(Map<String, dynamic> json) {
+    counter = getRequiredIntField(json, 'counter');
+
+    onLoad();
+
+    return this as SecondaryState;
+  }
+
+  @override
+  SecondaryState instance() => SecondaryState();
 
   @override
   String getId() {
