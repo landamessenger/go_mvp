@@ -31,6 +31,8 @@ abstract class Lifecycle<
 
   late P presenter;
 
+  S get state => presenter.state;
+
   BuildContext? get safeContext {
     if (mounted) {
       return context;

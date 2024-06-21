@@ -29,7 +29,7 @@ class ${nominal}PageState extends ${nominal}Lifecycle {
           const Padding(padding: EdgeInsets.all(7.5)),
           Center(
             child: Text(
-              '\${presenter.state.counter}',
+              '\${state.counter}',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),

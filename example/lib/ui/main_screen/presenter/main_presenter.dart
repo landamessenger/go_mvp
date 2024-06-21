@@ -1,5 +1,6 @@
 import 'package:go_mvp/go_mvp.dart';
 
+import '../../secondary/secondary_page.dart';
 import 'base_main_presenter.dart';
 
 class MainPresenter extends BaseMainPresenter {
@@ -11,5 +12,5 @@ class MainPresenter extends BaseMainPresenter {
   }
 
   @override
-  void goToNextScreen() => ['secondary'].route();
+  void goToNextScreen() => [SecondaryPage.routeName].route();
 }
