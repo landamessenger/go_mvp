@@ -44,17 +44,19 @@ abstract class Presenter<S extends Object<S>, M extends ViewModel<S>,
     model.callback = refreshScreen;
   }
 
-  Future<void> onCreate() async {
+  Future<bool> onCreate() async {
     if (created) {
-      return;
+      return false;
     }
     created = true;
-    model.onCreate();
+    await model.onCreate();
+    return true;
   }
 
-  Future<void> onResume() async {
-    model.onResume();
+  Future<bool> onResume() async {
+    await model.onResume();
     refreshScreen();
+    return true;
   }
 
   void exception(Exception e) {
