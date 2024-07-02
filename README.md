@@ -1,3 +1,7 @@
+[![Pub Version](https://img.shields.io/pub/v/go_mvp.svg)](https://pub.dev/packages/go_mvp)
+[![Build Status](https://travis-ci.org/landamessenger/go_mvp.svg?branch=master)](https://travis-ci.org/landamessenger/go_mvp)
+[![Coverage Status](https://coveralls.io/repos/github/landamessenger/go_mvp/badge.svg?branch=master)](https://coveralls.io/github/landamessenger/go_mvp?branch=master)
+
 # go_mvp
 
 `go_mvp` is a Flutter package designed to streamline the preparation of each screen in a project using the MVP (Model-View-Presenter) architecture.
