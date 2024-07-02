@@ -1,5 +1,5 @@
 name: go_mvp
-description: "A new Flutter package project."
+description: "Package designed to streamline the preparation of each screen in a project using the MVP."
 version: 1.0.0
 homepage: https://landamessenger.com
 repository: https://github.com/landamessenger/go_mvp
