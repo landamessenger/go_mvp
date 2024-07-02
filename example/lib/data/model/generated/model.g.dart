@@ -12,7 +12,7 @@ export 'package:object/object.dart';
 import 'package:example/ui/main_screen/domain/main_state.dart';
 import 'package:example/ui/secondary/domain/secondary_state.dart';
 
-class Model {
+class Model extends ObjectModel {
   static Model? _instance;
 
   Model._internal();
@@ -27,6 +27,7 @@ class Model {
     SecondaryState(),
   ];
 
+  @override
   void instancesForLoad({List<dynamic> additional = const []}) {
     final i = <dynamic>[];
     i.addAll(_instances);

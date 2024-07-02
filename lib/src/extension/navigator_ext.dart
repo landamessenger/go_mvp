@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 
-import '../manager/page_manager.dart';
+import '../manager/app_manager.dart';
 import '../utils/print.dart';
 
 extension NavigatorExt on List<String> {
@@ -23,7 +23,7 @@ extension NavigatorExt on List<String> {
     if (path == '/') {
       path = '/chats';
     }
-    PageManager().lastExtra.addAll(query ?? {});
-    PageManager().context.go(path);
+    AppManager().lastExtra.addAll(query ?? {});
+    AppManager().context.go(path);
   }
 }

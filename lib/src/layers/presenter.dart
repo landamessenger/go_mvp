@@ -5,7 +5,7 @@ import 'package:flutter/material.dart' hide View;
 import 'package:flutter/services.dart';
 import 'package:object/object.dart';
 
-import '../manager/page_manager.dart';
+import '../manager/app_manager.dart';
 import 'view.dart';
 import 'view_model.dart';
 
@@ -21,7 +21,7 @@ abstract class Presenter<S extends Object<S>, M extends ViewModel<S>,
   bool created = false;
   bool destroyed = false;
 
-  PageManager get pageManager => model.pageManager;
+  AppManager get pageManager => model.pageManager;
 
   BuildContext get context => view.context;
 
@@ -108,7 +108,7 @@ abstract class Presenter<S extends Object<S>, M extends ViewModel<S>,
 
   void exitWith(String key, dynamic data) {
     if (safeContext == null) return;
-    PageManager().onPop(key, data);
+    AppManager().onPop(key, data);
     Navigator.of(safeContext!).pop();
   }
 

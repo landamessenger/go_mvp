@@ -1,14 +1,14 @@
 import 'package:object/object.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide View;
-import 'package:go_mvp/src/manager/page_manager.dart';
+import 'package:go_mvp/src/manager/app_manager.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 import 'layers/presenter.dart';
 import 'layers/view.dart';
 import 'layers/view_model.dart';
 import 'utils/print.dart';
-import 'widget_interface.dart';
+import 'widget/widget_interface.dart';
 
 // Register the RouteObserver as a navigation observer.
 final RouteObserver<ModalRoute> routeObserver = RouteObserver<ModalRoute>();
@@ -48,7 +48,7 @@ abstract class Lifecycle<
   bool disposed = false;
 
   void refresh(Presenter presenter) {
-    if (PageManager().lowPerformance == true) {
+    if (AppManager().lowPerformance == true) {
       if (_callback == null) {
         _callback = () {
           printDebug('🐢 Low latency refresh');
@@ -59,7 +59,7 @@ abstract class Lifecycle<
         };
         Future.delayed(
           Duration(
-            milliseconds: PageManager().refreshLatency,
+            milliseconds: AppManager().refreshLatency,
           ),
           () {
             if (_callback != null) {
@@ -178,7 +178,7 @@ abstract class Lifecycle<
     // printDebug('$tagInStateWithLifecycle:didPopNext');
     super.didPopNext();
     pop = false;
-    final pageManager = PageManager();
+    final pageManager = AppManager();
     final popKey = pageManager.popKey;
     final popValue = pageManager.popValue;
     if (popKey.isNotEmpty && popValue != null) {
@@ -216,7 +216,7 @@ abstract class Lifecycle<
     status = Status.resumed;
     printDebug('$tagInStateWithLifecycle --> onResume()');
 
-    await PageManager().screenVisible(tagInStateWithLifecycle);
+    await AppManager().screenVisible(tagInStateWithLifecycle);
 
     widget.presenter.setView(view);
     await widget.presenter.onResume();

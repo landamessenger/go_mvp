@@ -8,5 +8,6 @@ export 'src/layers/presenter.dart';
 export 'src/layers/view.dart';
 export 'src/layers/view_model.dart';
 export 'src/lifecycle.dart';
-export 'src/manager/page_manager.dart';
-export 'src/widget_interface.dart';
+export 'src/manager/app_manager.dart';
+export 'src/widget/widget_interface.dart';
+export 'src/widget/app_widget.dart';

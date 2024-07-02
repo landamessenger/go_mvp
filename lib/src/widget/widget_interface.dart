@@ -2,11 +2,11 @@ import 'package:flutter/widgets.dart' hide View;
 import 'package:go_router/go_router.dart';
 import 'package:object/object.dart';
 
-import 'manager/page_manager.dart';
-import 'layers/presenter.dart';
-import 'layers/view_model.dart';
-import 'layers/view.dart';
-import 'presenter_handler.dart';
+import '../manager/app_manager.dart';
+import '../layers/presenter.dart';
+import '../layers/view_model.dart';
+import '../layers/view.dart';
+import '../presenter_handler.dart';
 
 abstract class WidgetInterface<
     S extends Object<S>,
@@ -33,7 +33,7 @@ abstract class WidgetInterface<
     GoRouterState state, {
     Map<String, dynamic>? extraData,
   }) =>
-      PageManager().pageFor<S, M, V, P, W>(
+      AppManager().pageFor<S, M, V, P, W>(
         page: this as W,
         state: state,
         extraData: extraData,

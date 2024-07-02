@@ -1,11 +1,11 @@
 import 'package:object/object.dart';
 
-import '../manager/page_manager.dart';
+import '../manager/app_manager.dart';
 
 abstract class ViewModel<S extends Object<S>> {
   abstract S state;
 
-  final pageManager = PageManager();
+  final pageManager = AppManager();
 
   Function() callback = () {};
 

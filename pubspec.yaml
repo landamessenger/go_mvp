@@ -1,7 +1,8 @@
 name: go_mvp
 description: "A new Flutter package project."
 version: 0.0.1
-homepage:
+homepage: https://landamessenger.com
+repository: https://github.com/landamessenger/go_mvp
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -11,8 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
   go_router: ^14.2.0                            # android   ios   linux   macos   web   windows
-  object: ^1.0.4                                # android   ios           macos   web   windows
+  object: ^1.1.0                                # android   ios           macos   web   windows
   visibility_detector: ^0.4.0+2                 # android   ios   linux   macos   web   windows
+  yaml: ^3.1.2                                  # android   ios   linux   macos   web   windows
 
 dev_dependencies:
   flutter_test:

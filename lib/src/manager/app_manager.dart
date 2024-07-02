@@ -1,17 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide View;
-import 'package:object/object.dart';
 import 'package:go_router/go_router.dart';
+import 'package:object/object.dart';
 
 import '../layers/presenter.dart';
-import '../layers/view_model.dart';
 import '../layers/view.dart';
+import '../layers/view_model.dart';
 import '../utils/json_ext.dart';
-import '../widget_interface.dart';
+import '../widget/widget_interface.dart';
 
-class PageManager {
+class AppManager {
   final Map<String, Presenter> _presenterMap = {};
-  static PageManager? _instance;
+  static AppManager? _instance;
 
   final Map<String, dynamic> lastExtra = {};
 
@@ -36,11 +36,20 @@ class PageManager {
   final global = GlobalKey();
   final key = GlobalKey<ScaffoldMessengerState>();
 
-  PageManager._internal();
+  AppManager._internal();
 
-  factory PageManager() {
-    _instance ??= PageManager._internal();
+  factory AppManager() {
+    _instance ??= AppManager._internal();
     return _instance!;
+  }
+
+  void withRouterAndModel(
+    GoRouter router,
+    ObjectModel object, {
+    List<dynamic> additional = const [],
+  }) {
+    this.router = router;
+    object.instancesForLoad(additional: additional);
   }
 
   Page<void> pageFor<

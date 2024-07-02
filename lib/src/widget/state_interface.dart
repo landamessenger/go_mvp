@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import 'layers/presenter.dart';
+import '../layers/presenter.dart';
 
 abstract class StateInterface {
   BuildContext? get safeContext;

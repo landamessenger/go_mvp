@@ -28,21 +28,10 @@ class MainPageState extends MainLifecycle {
           ),
         ],
       ),
-      floatingActionButton: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          FloatingActionButton(
-            onPressed: presenter.sampleAction,
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
-          ),
-          const Padding(padding: EdgeInsets.all(7.5)),
-          FloatingActionButton(
-            onPressed: presenter.goToNextScreen,
-            tooltip: 'Navigate',
-            child: const Icon(Icons.navigate_next),
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        onPressed: presenter.sampleAction,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
       ),
     );
   }

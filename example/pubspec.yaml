@@ -26,5 +26,10 @@ object:
   modelsFile: 'model.g.dart'
   generationClassSuffix: 'Gen'
 
+go_mvp:
+  baseProjectFolder: 'lib'
+  outputFolder: 'ui'
+  modelsFile: 'data/model/generated/model.g.dart'
+
 flutter:
   uses-material-design: true
