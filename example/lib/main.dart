@@ -5,7 +5,18 @@ import 'package:go_mvp/go_mvp.dart';
 import 'routes.dart';
 
 void main() {
-  AppManager().withRouterAndModel(router, Model());
+  AppManager().configure(
+    router: router,
+    object: Model(),
+    debug: false,
+    lowPerformance: false,
+    refreshLatency: 500,
+    slashResolution: '',
+    additionalClasses: [],
+    screenVisible: (String screen) async {
+      // do something with the visible screen information
+    },
+  );
   runApp(const MyApp());
 }
 

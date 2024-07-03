@@ -13,11 +13,37 @@ class AppManager {
   final Map<String, Presenter> _presenterMap = {};
   static AppManager? _instance;
 
+  /// Debug mode
+  bool _debug = false;
+
+  bool get debug => _debug;
+
+  /// Slash resolution
+  String _slashResolution = '';
+
+  String get slashResolution => _slashResolution;
+
+  /// Router
+  GoRouter? _router;
+
+  GoRouter? get router => _router;
+
+  /// Low performance mode
+  bool _lowPerformance = false;
+
+  bool get lowPerformance => _lowPerformance;
+
+  /// Refresh latency
+  int _refreshLatency = 500;
+
+  int get refreshLatency => _refreshLatency;
+
+  /// Screen visible callback
+  Future Function(String) _screenVisible = (_) async {};
+
+  Future Function(String) get screenVisible => _screenVisible;
+
   final Map<String, dynamic> lastExtra = {};
-
-  GoRouter? router;
-
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   BuildContext get context {
     final context = router?.routerDelegate.navigatorKey.currentContext ??
@@ -28,13 +54,11 @@ class AppManager {
     return context;
   }
 
-  Future Function(String) screenVisible = (_) async {};
-
-  bool lowPerformance = false;
-  int refreshLatency = 500;
-
   final global = GlobalKey();
-  final key = GlobalKey<ScaffoldMessengerState>();
+
+  final navigatorKey = GlobalKey<NavigatorState>();
+
+  final scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
   AppManager._internal();
 
@@ -43,13 +67,23 @@ class AppManager {
     return _instance!;
   }
 
-  void withRouterAndModel(
-    GoRouter router,
-    ObjectModel object, {
-    List<dynamic> additional = const [],
+  void configure({
+    required GoRouter router,
+    required ObjectModel object,
+    String slashResolution = '',
+    bool debug = false,
+    bool lowPerformance = false,
+    int refreshLatency = 500,
+    List<dynamic> additionalClasses = const [],
+    Future Function(String)? screenVisible,
   }) {
-    this.router = router;
-    object.instancesForLoad(additional: additional);
+    _slashResolution = slashResolution;
+    _debug = debug;
+    _lowPerformance = lowPerformance;
+    _refreshLatency = refreshLatency;
+    _router = router;
+    _screenVisible = screenVisible ?? (_) async {};
+    object.instancesForLoad(additional: additionalClasses);
   }
 
   Page<void> pageFor<

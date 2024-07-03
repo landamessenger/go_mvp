@@ -525,7 +525,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       key: AppManager().global,
-      scaffoldMessengerKey: scaffoldMessengerKey ?? AppManager().key,
+      scaffoldMessengerKey: scaffoldMessengerKey ?? AppManager().scaffoldMessengerKey,
       routeInformationProvider: routeInformationProvider,
       routeInformationParser: routeInformationParser,
       routerDelegate: routerDelegate,

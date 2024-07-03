@@ -21,7 +21,7 @@ abstract class Presenter<S extends Object<S>, M extends ViewModel<S>,
   bool created = false;
   bool destroyed = false;
 
-  AppManager get pageManager => model.pageManager;
+  AppManager get appManager => model.appManager;
 
   BuildContext get context => view.context;
 
@@ -75,7 +75,7 @@ abstract class Presenter<S extends Object<S>, M extends ViewModel<S>,
 
     await model.onDestroy();
 
-    pageManager.clearCacheOf(key);
+    appManager.clearCacheOf(key);
 
     return true;
   }
@@ -113,7 +113,7 @@ abstract class Presenter<S extends Object<S>, M extends ViewModel<S>,
   }
 
   void showSnack(Widget widget) {
-    pageManager.key.currentState?.showSnackBar(
+    appManager.scaffoldMessengerKey.currentState?.showSnackBar(
       SnackBar(
         content: widget,
       ),
@@ -121,7 +121,7 @@ abstract class Presenter<S extends Object<S>, M extends ViewModel<S>,
   }
 
   void showTextSnack(String text) {
-    pageManager.key.currentState?.showSnackBar(
+    appManager.scaffoldMessengerKey.currentState?.showSnackBar(
       SnackBar(
         content: Text(
           text,

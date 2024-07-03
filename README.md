@@ -4,8 +4,7 @@
 
 # go_mvp
 
-`go_mvp` is a Flutter package designed to streamline the preparation of each screen in a project using the MVP (Model-View-Presenter) architecture.
-
+A package designed to streamline the preparation of each screen in a project using the MVP (Model-View-Presenter) architecture.
 
 ## Features
 
@@ -21,7 +20,7 @@
 
 [- Requirements](https://github.com/landamessenger/go_mvp/wiki/Installation#requirements)
 
-[- Configuration](https://github.com/landamessenger/go_mvp/wiki/Installation#configuration)
+[- Project Configuration](https://github.com/landamessenger/go_mvp/wiki/Installation#project-configuration)
 
 [- Create new screens](https://github.com/landamessenger/go_mvp/wiki/Installation#create-new-screens)
 
@@ -30,12 +29,6 @@
 [- Implementations](https://github.com/landamessenger/go_mvp/wiki/Lifecycle#implementations)
 
 ### [Navigation](https://github.com/landamessenger/go_mvp/wiki/Navigation)
-
-[- Routes](https://github.com/landamessenger/go_mvp/wiki/Navigation#routes)
-
-[- Configuration](https://github.com/landamessenger/go_mvp/wiki/Navigation#configuration)
-
-[- Navigate](https://github.com/landamessenger/go_mvp/wiki/Navigation#navigate)
 
 ### [State](https://github.com/landamessenger/go_mvp/wiki/State)
 

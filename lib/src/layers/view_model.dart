@@ -5,7 +5,7 @@ import '../manager/app_manager.dart';
 abstract class ViewModel<S extends Object<S>> {
   abstract S state;
 
-  final pageManager = AppManager();
+  final appManager = AppManager();
 
   Function() callback = () {};
 
