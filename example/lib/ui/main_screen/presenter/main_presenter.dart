@@ -13,5 +13,4 @@ class MainPresenter extends BaseMainPresenter {
 
   @override
   void goToNextScreen() => [SecondaryPage.routeName].route();
-
 }

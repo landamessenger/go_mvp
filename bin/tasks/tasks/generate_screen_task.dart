@@ -15,26 +15,33 @@ import '../../utils/dependency.dart';
 import '../../utils/print.dart';
 
 const baseProject = 'lib';
+const defaultModelFile = 'model.g.dart';
 
 class GenerateScreenTask extends BaseTask {
   @override
   Future<void> work(List<String> args) async {
-
     var appId = loadId();
     var config = loadConfigFile();
 
-    final baseProjectFolder = config['baseProjectFolder'] ?? baseProject;
-    final dir = Directory('./$baseProjectFolder');
-    await dir.create(recursive: true);
+    var destinationPath = '';
 
-    final outputFolder = baseProjectFolder + '/' + (config['outputFolder'] ?? '');
+    if (args.length != 2) {
+      final baseProjectFolder = config['baseProjectFolder'] ?? baseProject;
+      final dir = Directory('./$baseProjectFolder');
+      await dir.create(recursive: true);
 
-    final outputFolderDir = Directory('./$outputFolder');
-    await outputFolderDir.create(recursive: true);
+      final outputFolder = baseProjectFolder + '/' + (config['outputFolder'] ?? '');
 
-    final String modelsFile = config['modelsFile'] ?? 'model.g.dart';
+      final outputFolderDir = Directory('./$outputFolder');
+      await outputFolderDir.create(recursive: true);
 
-    final destinationPath = outputFolder;
+      destinationPath = outputFolder;
+    } else {
+      destinationPath = args[1];
+    }
+
+    final String modelsFile = config['modelsFile'] ?? defaultModelFile;
+
     final newPathName = args[0];
     final generatedModelPath = '$appId/$modelsFile';
 
@@ -46,6 +53,7 @@ class GenerateScreenTask extends BaseTask {
     final folder = Directory(composedDestinationPath);
     if (await folder.exists()) {
       printDebug('🔴 Destination folder $composedDestinationPath already exists');
+      return;
     }
 
     await createDomainFile(destinationPath, newPathName, generatedModelPath);

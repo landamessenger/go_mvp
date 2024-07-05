@@ -1,3 +1,7 @@
+## 1.1.1
+
+* Added secondary param for different screen destination.
+
 ## 1.1.0
 
 * Renamed `AppManager().withRouterAndModel` to `AppManager().configure`.
